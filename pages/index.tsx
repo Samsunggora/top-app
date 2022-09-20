@@ -4,8 +4,10 @@ import P from "../components/P/P";
 import Tag from "../components/Tag/Tag";
 import {useEffect, useState} from "react";
 import Rating from "../components/Rating/Rating";
+import Layout from "../layout/Layout";
+import {withLayout} from "../layout/Layout";
 
-export default function Home(): JSX.Element {
+function Home(): JSX.Element {
     const [counter, setCounter] = useState<number>(0);
     useEffect(() => {
         console.log(counter);
@@ -14,7 +16,7 @@ export default function Home(): JSX.Element {
         }
     });
     return (
-        <div>
+        <>
             <Htag tag='h1'>{counter}</Htag>
             <Button appearance="ghost" onClick={() => setCounter(x => x + 1)}> Button counter + </Button>
             <Button appearance="primary" arrow="right">Button</Button>
@@ -38,6 +40,8 @@ export default function Home(): JSX.Element {
             <Rating rating={3}/>
             <Rating rating={4}/>
             <Rating rating={5}/>
-        </div>
+        </>
     );
 }
+
+export default withLayout(Home);
